@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMABA Mega Reviewer (100 Items)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Lily+Script+One&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff85a2;
+            --secondary: #7ec8e3;
+            --accent: #ffc2d1;
+            --bg: #fff5f7;
+            --text: #4a4a4a;
+            --success: #a2d2ff;
+            --error: #ffafcc;
+        }
+
+        body { font-family: 'Quicksand', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; line-height: 1.6; }
+        header { background-color: var(--primary); color: white; text-align: center; padding: 1.5rem 1rem; border-bottom: 5px solid var(--accent); }
+        h1 { font-family: 'Lily Script One', cursive; font-size: 2.2rem; margin: 0; }
+
+        .nav-container { display: flex; justify-content: center; gap: 15px; margin: 20px 0; position: sticky; top: 0; z-index: 1000; background: var(--bg); padding: 10px; }
+        .nav-btn { background: white; border: 2px solid var(--primary); padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: 700; color: var(--primary); transition: 0.3s; }
+        .nav-btn.active { background: var(--primary) !important; color: white !important; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 15px; }
+        .section { display: none; }
+        .section.active { display: block !important; animation: fadeIn 0.3s ease-in; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Lecture Styles */
+        .category-card { background: white; border-radius: 15px; padding: 20px; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(255, 133, 162, 0.1); border-left: 8px solid var(--secondary); }
+        .category-card h2 { color: var(--primary); margin-top: 0; font-size: 1.5rem; border-bottom: 2px dashed var(--accent); padding-bottom: 10px; }
+        .artist-entry { margin-bottom: 15px; padding: 12px; background: #fffafa; border-radius: 10px; border: 1px solid #ffeef2; }
+        .artist-name { font-weight: 700; color: #d85a7f; display: block; font-size: 1.1rem; }
+        .keyword { color: #4a90e2; font-weight: 700; }
+
+        /* Quiz Styles */
+        .quiz-card { background: white; border-radius: 25px; padding: 30px; text-align: center; border: 2px solid var(--accent); box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+        .progress-bar { width: 100%; height: 12px; background: #eee; border-radius: 10px; margin: 15px 0; overflow: hidden; }
+        #progress-fill { height: 100%; background: linear-gradient(90deg, var(--secondary), var(--primary)); width: 0%; transition: 0.5s; }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+        @media (max-width: 500px) { .options-grid { grid-template-columns: 1fr; } }
+        .option-btn { background: #fff; border: 2px solid #eee; padding: 15px; border-radius: 12px; cursor: pointer; font-weight: 600; font-family: inherit; }
+        .correct { background-color: var(--success) !important; color: white; }
+        .wrong { background-color: var(--error) !important; color: white; }
+        input[type="text"] { width: 85%; padding: 15px; border: 2px solid var(--accent); border-radius: 12px; font-size: 1.1rem; text-align: center; margin-bottom: 10px; outline: none; }
+        .submit-btn { background: var(--primary); color: white; border: none; padding: 12px 40px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>✨ GAMABA Mega Hub ✨</h1>
+</header>
+
+<div class="nav-container">
+    <button class="nav-btn active" id="btn-review" onclick="switchTab('review')">Lecture Hub</button>
+    <button class="nav-btn" id="btn-quiz" onclick="switchTab('quiz')">Challenge Zone (100 Items)</button>
+</div>
+
+<div class="container">
+    <div id="review" class="section active">
+        <div class="category-card">
+            <h2>📜 Literature & Epic Chanters</h2>
+            <div class="artist-entry">
+                <span class="artist-name">Ginaw Bilog (Mindoro)</span>
+                Isinusulat ang <span class="keyword">Amahan</span> poem sa kawayan. Binubuo ito ng <span class="keyword">7 syllables</span> bawat linya. Awarded ng panahon ni Fidel Ramos.
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Fernando Caballero (2000)</span>
+                Epic chanter. Pinakatanyag ang <span class="keyword">Humadapnon</span>, ang longest epic na tumatagal ng <span class="keyword">162 hours</span>.
+            </div>
+        </div>
+
+        <div class="category-card">
+            <h2>🎶 Music & Performance</h2>
+            <div class="artist-entry">
+                <span class="artist-name">Masino Intaray (1993 - Pres. Ramos)</span>
+                Palawan master. <span class="keyword">Basal</span> (Gong ensemble sa ritual), <span class="keyword">Tambilaw</span> (Rice sharing ritual), <span class="keyword">Kulilal</span> (Lyrical singing), <span class="keyword">Bagit</span> (Mimics nature), <span class="keyword">Aruding</span> (Mouth harp), at <span class="keyword">Babarak</span> (Ring flute - nose/mouth).
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Uwang Ahadas (2000)</span>
+                Yakan musician. Kilala sa <span class="keyword">Kwintangan Kayu</span> (wood) at <span class="keyword">Agung</span> (metal gong).
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Samaon Sulaiman (1993)</span>
+                T'boli master ng <span class="keyword">Kudyapi/Kutyapi</span> (2-string guitar na mukhang bangka).
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Alonzo Saclag (2000)</span>
+                Kalinga musician/dancer. Founder ng <span class="keyword">Kalinga Budong</span>.
+            </div>
+        </div>
+
+        <div class="category-card">
+            <h2>🧶 Master Weavers</h2>
+            <div class="artist-entry">
+                <span class="artist-name">Lang Dulay (1998 - Pres. Estrada)</span>
+                <span class="keyword">Dream Weaver</span> (T'boli). Gumagamit ng <span class="keyword">Abaca fiber</span>. Designs: Buling Langit (clouds), Bankiring (bangs), Kabangi (butterfly).
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Salinta Monon (1998)</span>
+                Bagobo weaver ng <span class="keyword">Inabal</span> fiber. Sikat sa <span class="keyword">Binuwaya</span> (crocodile) design.
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Darhata Sawabi (2004 - Pres. Gloria)</span>
+                Tausug master ng <span class="keyword">Pis Syabit</span> weaving.
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Magdalena Gamayo</span>
+                Ilocano weaver ng <span class="keyword">Abel</span> (cotton). Patterns: Spiral at Sinan-sabong (flowers).
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Ambalang Ausalin</span>
+                Yakan master ng <span class="keyword">Tennum</span> (cloth weaving). Patterns: <span class="keyword">Sinaluan</span> (small diamond) at <span class="keyword">Siputangan</span> (geometric).
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Estelita Bantilan (2016)</span>
+                B'laan weaver. Gumagamit ng <span class="keyword">Pandanus/Pandan</span>. (Bi = Opponent, Laan = People).
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Yabing Masalon Dulo (2016)</span>
+                Ikat weaver. <span class="keyword">Mabal</span> (process) at <span class="keyword">Tabih</span> (finished product).
+            </div>
+        </div>
+
+        <div class="category-card">
+            <h2>🔨 Crafts & Metal</h2>
+            <div class="artist-entry">
+                <span class="artist-name">Eduardo Mutuc (2004)</span>
+                Kapampangan metalsmith (Apalit). Secular art para sa simbahan.
+            </div>
+            <div class="artist-entry">
+                <span class="artist-name">Teofilo Garcia (2012)</span>
+                Abra. Gumagawa ng <span class="keyword">Tabungaw</span> headpiece mula sa <span class="keyword">Upo gourd</span>.
+            </div>
+        </div>
+    </div>
+
+    <div id="quiz" class="section">
+        <div class="quiz-card">
+            <div id="quiz-header">
+                <h3 id="question-type-label" style="color: var(--primary); margin: 0;">Part 1: Identification</h3>
+                <div id="score-text" style="font-weight:bold;">Score: 0 / 100</div>
+            </div>
+            <div class="progress-bar"><div id="progress-fill"></div></div>
+            <div id="quiz-box"></div>
+            <div id="feedback" style="margin-top:15px; font-weight:700; min-height: 1.5rem;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const questions = [
+        // Identification (1-35)
+        { type: 'text', q: "Bilog poem from Mindoro.", a: "Amahan" },
+        { type: 'text', q: "“Amahan” poem consists of how many syllables per line?", a: "7" },
+        { type: 'text', q: "President who awarded Masino Intaray in 1993.", a: "Fidel Ramos" },
+        { type: 'text', q: "Gong ensemble music during ritual of the Palawan people.", a: "Basal" },
+        { type: 'text', q: "Ritual of rice sharing.", a: "Tambilaw" },
+        { type: 'text', q: "Lyrical singing or type of folk song of Palawan.", a: "Kulilal" },
+        { type: 'text', q: "Instrumental music mimicking sounds of nature.", a: "Bagit" },
+        { type: 'text', q: "Yakan mouth harp.", a: "Aruding" },
+        { type: 'text', q: "Ring flute that can be played with nose and mouth.", a: "Babarak" },
+        { type: 'text', q: "T'boli dream weaver awarded in 1998.", a: "Lang Dulay" },
+        { type: 'text', q: "Fiber used in T’nalak weaving.", a: "Abaca" },
+        { type: 'text', q: "T’nalak design inspired by clouds.", a: "Buling langit" },
+        { type: 'text', q: "T’nalak design about butterfly.", a: "Kabangi" },
+        { type: 'text', q: "T’nalak design referring to head bangs.", a: "Bankiring" },
+        { type: 'text', q: "Two-string guitar of the T’boli.", a: "Kudyapi" },
+        { type: 'text', q: "Indigenous group of Samaon Sulaiman.", a: "T'boli" },
+        { type: 'text', q: "Bagobo textile made from fiber.", a: "Inabal" },
+        { type: 'text', q: "Crocodile-inspired Bagobo design.", a: "Binuwaya" },
+        { type: 'text', q: "Musician and dancer from Kalinga (2000 awardee).", a: "Alonzo Saclag" },
+        { type: 'text', q: "Founder of Kalinga Budong.", a: "Alonzo Saclag" },
+        { type: 'text', q: "Longest epic lasting 162 hours.", a: "Humadapnon" },
+        { type: 'text', q: "Yakan musician awarded in 2000.", a: "Uwang Ahadas" },
+        { type: 'text', q: "Wooden instrument of Uwang Ahadas.", a: "Kwintangan kayu" },
+        { type: 'text', q: "Large gong instrument.", a: "Agung" },
+        { type: 'text', q: "Tausug master weaver awarded in 2004.", a: "Darhata Sawabi" },
+        { type: 'text', q: "Weaving tradition of Tausug.", a: "Pis Syabit" },
+        { type: 'text', q: "Kapampangan metalsmith from Apalit, Pampanga.", a: "Eduardo Mutuc" },
+        { type: 'text', q: "Ilocano who makes Tabungaw headpiece.", a: "Teofilo Garcia" },
+        { type: 'text', q: "Tabungaw is made from what vegetable?", a: "Upo" },
+        { type: 'text', q: "Textile art of Magdalena Gamayo.", a: "Abel" },
+        { type: 'text', q: "Small diamond pattern in Yakan weaving.", a: "Sinaluan" },
+        { type: 'text', q: "Geometric design in Yakan weaving.", a: "Siputangan" },
+        { type: 'text', q: "Mat weaver who uses pandanus.", a: "Estelita Bantilan" },
+        { type: 'text', q: "Process of weaving in Mabal-tabih.", a: "Mabal" },
+        { type: 'text', q: "Finished product in Mabal-tabih.", a: "Tabih" },
+
+        // Multiple Choice (36-80)
+        { type: 'mc', q: "Masino Intaray was awarded in:", options: ["1998", "1993", "2000", "2004"], a: "1993" },
+        { type: 'mc', q: "Basal is:", options: ["Love song", "Gong ensemble", "Epic", "Flute"], a: "Gong ensemble" },
+        { type: 'mc', q: "Tambilaw is a:", options: ["Dance", "Ritual", "Instrument", "Design"], a: "Ritual" },
+        { type: 'mc', q: "Kulilal is:", options: ["Epic", "Lyrical singing", "Weaving", "Gong"], a: "Lyrical singing" },
+        { type: 'mc', q: "Bagit imitates:", options: ["Animals", "Nature sounds", "War", "Birds only"], a: "Nature sounds" },
+        { type: 'mc', q: "Aruding is a:", options: ["Nose flute", "Guitar", "Mouth harp", "Drum"], a: "Mouth harp" },
+        { type: 'mc', q: "Babarak is played using:", options: ["Mouth only", "Nose only", "Both nose and mouth", "Hands only"], a: "Both nose and mouth" },
+        { type: 'mc', q: "Lang Dulay is known as:", options: ["Metal smith", "Dream weaver", "Epic singer", "Dancer"], a: "Dream weaver" },
+        { type: 'mc', q: "T’nalak fiber comes from:", options: ["Coconut", "Abaca", "Bamboo", "Pandan"], a: "Abaca" },
+        { type: 'mc', q: "Buling Langit means:", options: ["Butterfly", "Bangs", "Cloud", "Diamond"], a: "Cloud" },
+        { type: 'mc', q: "Kabangi design is inspired by:", options: ["Bird", "Butterfly", "Sun", "River"], a: "Butterfly" },
+        { type: 'mc', q: "Bankiring refers to:", options: ["Cloud", "Crocodile", "Head bangs", "Flower"], a: "Head bangs" },
+        { type: 'mc', q: "Kudyapi looks like a:", options: ["Leaf", "Boat", "Bird", "Gong"], a: "Boat" },
+        { type: 'mc', q: "Kudyapi has how many strings?", options: ["1", "2", "3", "4"], a: "2" },
+        { type: 'mc', q: "Salinta Monon is from which group?", options: ["T’boli", "Bagobo", "Yakan", "Tausug"], a: "Bagobo" },
+        { type: 'mc', q: "Inabal is a:", options: ["Dance", "Fiber", "Instrument", "Ritual"], a: "Fiber" },
+        { type: 'mc', q: "Binuwaya means:", options: ["Bird", "Crocodile", "Cloud", "River"], a: "Crocodile" },
+        { type: 'mc', q: "Alonzo Saclag is from:", options: ["Abra", "Pampanga", "Kalinga", "Mindoro"], a: "Kalinga" },
+        { type: 'mc', q: "Humadapnon is a:", options: ["Song", "Dance", "Epic", "Instrument"], a: "Epic" },
+        { type: 'mc', q: "Humadapnon lasts:", options: ["100 hrs", "120 hrs", "162 hrs", "200 hrs"], a: "162 hrs" },
+        { type: 'mc', q: "Uwang Ahadas belongs to:", options: ["T’boli", "Yakan", "Tausug", "Sama"], a: "Yakan" },
+        { type: 'mc', q: "Kwintangan Kayu is made of:", options: ["Bamboo", "Wood", "Metal", "Plastic"], a: "Wood" },
+        { type: 'mc', q: "Agung is a:", options: ["Flute", "Gong", "Guitar", "Harp"], a: "Gong" },
+        { type: 'mc', q: "Darhata Sawabi is from:", options: ["Tausug", "Yakan", "T’boli", "Ilocano"], a: "Tausug" },
+        { type: 'mc', q: "Pis Syabit is:", options: ["Instrument", "Weaving", "Dance", "Epic"], a: "Weaving" },
+        { type: 'mc', q: "Eduardo Mutuc is known for:", options: ["Weaving", "Epic", "Metal smithing", "Singing"], a: "Metal smithing" },
+        { type: 'mc', q: "Mutuc is from:", options: ["Abra", "Apalit Pampanga", "Mindoro", "Kalinga"], a: "Apalit Pampanga" },
+        { type: 'mc', q: "Teofilo Garcia is from:", options: ["Abra", "Pampanga", "Kalinga", "Palawan"], a: "Abra" },
+        { type: 'mc', q: "Tabungaw is used as:", options: ["Basket", "Hat", "Instrument", "Cloth"], a: "Hat" },
+        { type: 'mc', q: "Magdalena Gamayo weaves:", options: ["T’nalak", "Abel", "Inabal", "Pis Syabit"], a: "Abel" },
+        { type: 'mc', q: "Abel uses:", options: ["Cotton", "Metal", "Abaca only", "Bamboo"], a: "Cotton" },
+        { type: 'mc', q: "Sinaluan pattern is:", options: ["Flower", "Small diamond", "Cloud", "Crocodile"], a: "Small diamond" },
+        { type: 'mc', q: "Siputangan is:", options: ["Geometric", "Animal", "Flower", "Human"], a: "Geometric" },
+        { type: 'mc', q: "Estelita Bantilan uses:", options: ["Abaca", "Pandanus", "Cotton", "Bamboo"], a: "Pandanus" },
+        { type: 'mc', q: "Bi means:", options: ["Friend", "Opponent", "Leader", "River"], a: "Opponent" },
+        { type: 'mc', q: "Laan means:", options: ["Enemy", "People", "Sky", "Flower"], a: "People" },
+        { type: 'mc', q: "Yabing Masalon Dulo is known for:", options: ["Metal", "Ikat weaving", "Epic", "Flute"], a: "Ikat weaving" },
+        { type: 'mc', q: "Mabal is the:", options: ["Product", "Design", "Process", "Fiber"], a: "Process" },
+        { type: 'mc', q: "Tabih is the:", options: ["Process", "Fiber", "Finished product", "Pattern"], a: "Finished product" },
+        { type: 'mc', q: "Sapironia Pagsac Madanlo is a:", options: ["Musician", "Textile weaver", "Dancer", "Epic singer"], a: "Textile weaver" },
+        { type: 'mc', q: "Ambalang Ausalin is from:", options: ["Yakan", "T’boli", "Ilocano", "Kalinga"], a: "Yakan" },
+        { type: 'mc', q: "Tennum refers to:", options: ["Song", "Cloth weaving", "Ritual", "Epic"], a: "Cloth weaving" },
+        { type: 'mc', q: "Ginaw Bilog is from:", options: ["Mindoro", "Abra", "Pampanga", "Palawan"], a: "Mindoro" },
+        { type: 'mc', q: "“Amahan” poem uses:", options: ["5 syllables", "6 syllables", "7 syllables", "8 syllables"], a: "7 syllables" },
+        { type: 'mc', q: "Fernando Caballero is known for:", options: ["Epic chanting", "Weaving", "Metal", "Dance"], a: "Epic chanting" },
+
+        // True/False (81-100)
+        { type: 'mc', q: "Ginaw Bilog is from Mindoro.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Amahan poem has 7 syllables per line.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Masino Intaray was awarded in 2000.", options: ["TRUE", "FALSE"], a: "FALSE" },
+        { type: 'mc', q: "Basal is gong ensemble music.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Tambilaw is rice sharing ritual.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Kulilal is instrumental only.", options: ["TRUE", "FALSE"], a: "FALSE" },
+        { type: 'mc', q: "Bagit mimics nature sounds.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Aruding is a mouth harp.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Babarak can be played with nose and mouth.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Lang Dulay is a dream weaver.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "T’nalak is made from abaca fiber.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Kudyapi has two strings.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Salinta Monon is from Bagobo.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Humadapnon is the longest epic at 162 hrs.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Uwang Ahadas is a Yakan musician.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Pis Syabit is Tausug weaving.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Eduardo Mutuc is from Abra.", options: ["TRUE", "FALSE"], a: "FALSE" },
+        { type: 'mc', q: "Tabungaw is a headpiece made from gourd.", options: ["TRUE", "FALSE"], a: "TRUE" },
+        { type: 'mc', q: "Mabal means finished product.", options: ["TRUE", "FALSE"], a: "FALSE" },
+        { type: 'mc', q: "Sinaluan is a small diamond pattern.", options: ["TRUE", "FALSE"], a: "TRUE" }
+  ];
+
+    let currentIdx = 0;
+    let score = 0;
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        document.getElementById('btn-' + tabId).classList.add('active');
+        if(tabId === 'quiz') startQuiz();
+    }
+
+    function startQuiz() {
+        currentIdx = 0; score = 0; loadQuestion();
+    }
+
+    function loadQuestion() {
+        const box = document.getElementById('quiz-box');
+        const feedback = document.getElementById('feedback');
+        const typeLabel = document.getElementById('question-type-label');
+        feedback.innerText = "";
+        
+        document.getElementById('score-text').innerText = `Score: ${score} / ${questions.length}`;
+        document.getElementById('progress-fill').style.width = `${(currentIdx / questions.length) * 100}%`;
+
+        if (currentIdx < 35) typeLabel.innerText = "Part 1: Identification";
+        else if (currentIdx < 80) typeLabel.innerText = "Part 2: Multiple Choice";
+        else typeLabel.innerText = "Part 3: True or False";
+
+        if (currentIdx >= questions.length) {
+            box.innerHTML = `<h2>Quiz Complete! ✨</h2><p>Final Score: <strong>${score}/100</strong></p><button class="submit-btn" onclick="startQuiz()">Restart Challenge</button>`;
+            return;
+        }
+
+        const q = questions[currentIdx];
+        let html = `<p style="font-size:1.15rem; font-weight:600; margin: 20px 0;">${currentIdx + 1}. ${q.q}</p>`;
+        
+        if (q.type === 'text') {
+            html += `<input type="text" id="ans-input" placeholder="Type answer..." autocomplete="off"><br><button class="submit-btn" onclick="checkText()">Submit</button>`;
+        } else {
+            html += `<div class="options-grid">`;
+            q.options.forEach(opt => { html += `<button class="option-btn" onclick="checkMC('${opt}', this)">${opt}</button>`; });
+            html += `</div>`;
+        }
+        box.innerHTML = html;
+        
+        if(q.type === 'text') {
+            document.getElementById('ans-input').focus();
+            document.getElementById('ans-input').onkeypress = (e) => { if(e.key === 'Enter') checkText(); };
+        }
+    }
+
+    function checkText() {
+        const val = document.getElementById('ans-input').value.trim().toLowerCase();
+        const correct = questions[currentIdx].a.toLowerCase();
+        if (val === correct) { score++; showFeedback(true); } 
+        else { showFeedback(false, questions[currentIdx].a); }
+    }
+
+    function checkMC(choice, btn) {
+        document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+        if (choice.toLowerCase() === questions[currentIdx].a.toLowerCase()) { 
+            score++; btn.classList.add('correct'); showFeedback(true); 
+        } else { 
+            btn.classList.add('wrong'); showFeedback(false, questions[currentIdx].a); 
+        }
+    }
+
+    function showFeedback(isCorrect, correctAns) {
+        const f = document.getElementById('feedback');
+        if(isCorrect) { f.innerText = "Correct! 🌟"; f.style.color = "#4a90e2"; }
+        else { f.innerHTML = `Wrong. Correct: <strong>${correctAns}</strong>`; f.style.color = "#d85a7f"; }
+        setTimeout(() => { currentIdx++; loadQuestion(); }, 1200);
+    }
+</script>
+</body>
+</html>
